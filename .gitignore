@@ -14,3 +14,8 @@ error.txt
 debug.txt
 .DS_Store
 nbs/
+.idea
+__pycache__
+webdriver
+chromedriver.log
+test.html

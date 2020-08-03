@@ -18,6 +18,8 @@ from cutil import seleniumdriver as seleniumdriver
 from cutil.file import get_basename, get_extension, rename_file, safe_makedirs
 from cutil.url import get_filename, complete_url, download, is_media
 from selenium.webdriver.support.ui import WebDriverWait
+import argparse
+
 class Scraper(metaclass=ABCMeta):
 
     def __init__(self, driver='chrome', scroll_pause=1.0, next_page_pause=1.0, mode='normal', debug=False):
