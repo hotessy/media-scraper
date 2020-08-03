@@ -18,6 +18,8 @@ from cutil import seleniumdriver as seleniumdriver
 from cutil.file import get_basename, get_extension, rename_file, safe_makedirs
 from cutil.url import get_filename, complete_url, download, is_media
 from selenium.webdriver.support.ui import WebDriverWait
+import argparse
+
 class Scraper(metaclass=ABCMeta):
 
     def __init__(self, driver='chrome', scroll_pause=1.0, next_page_pause=1.0, mode='normal', debug=False):
@@ -117,24 +119,6 @@ class TwitterImageScraper(Scraper):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._name = 'general'
-
-         if __name__ == "__main__":
-            ap = argparse.ArgumentParser()
-            ap.add_argument("-url-list", "--filepath", required=True,
-                            help="path of file")
-            args = vars(ap.parse_args())
-
-            filepath = args["filepath"]
-
-            scraper = TwitterImageScraper(driver='chrome', mode='verbose', debug=True)
-            file = open(filepath, 'r')
-            URLs = file.readlines()
-
-            for url in URLs:
-                print(url)
-                tasks = scraper.scrape(url)
-                scraper.download(tasks=tasks, path='.\\download\\general')
-
 
     def scrape(self, url):
         
